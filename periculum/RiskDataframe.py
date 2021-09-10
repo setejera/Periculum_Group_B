@@ -1,22 +1,20 @@
 import pandas as pd
 import numpy as np
+import warnings
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, export_graphviz
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn import tree
-from sklearn.metrics import accuracy_score, roc_curve, auc, roc_auc_score
-from sklearn.impute import SimpleImputer
+from sklearn.metrics import accuracy_score, roc_curve, auc
 from sklearn.preprocessing import LabelEncoder, RobustScaler
-
 pd.options.mode.chained_assignment = None
-import warnings
 warnings.filterwarnings('ignore')
 
 
 class RiskDataframe(pd.DataFrame):
     """
-    The class is used to extend the properties of Dataframes to a prticular
-    type of Dataframes in the Risk Indistry. 
+    The class is used to extend the properties of Dataframes to a particular
+    type of Dataframes in the Risk Industry.
     It provides the end user with both general and specific cleaning functions, 
     though they never reference a specific VARIABLE NAME.
     
@@ -80,6 +78,8 @@ class RiskDataframe(pd.DataFrame):
         """
         This method is used as a way to create a list for each column types,
         in order to use these lists in further methods that will be called.
+        Since this method is necessary for the other methods in the class,
+        it is called when the class is instantiated.
         """
         for column in self.columns:
             if self[column].dtype == 'O':
@@ -170,13 +170,23 @@ class RiskDataframe(pd.DataFrame):
 
     def find_segment_split(self, target='', robust_scaler=''):
         """
+        This method finds if the data in each column performs better if it is split in order to segment the data
+        and have a better model fit. The model used is logistic regression for a binary classification, which does
+        not accept alphanumeric values, therefore labelencoder is automatically called if the method detects these
+        data type columns. The required argument for this method is target, since the logistic regression model needs
+        this. Robust_scaler is an optional argument in order to enhance model performance. Once the baseline model with
+        the full file without segmentation is calculated, this method continues to find where is the optimal place
+        for spltting each column by applying a decision tree classifier, and extracting the root node splitting point.
+        Finally it fits a model on the segmented dataset and compares the results of both models.
 
         Returns
         -------
-        Example 1: ACCOUNT_NUMBER Not good for segmentation. Afer analysis, we did not find a good split using this variable.
-        Example 2: SEX Good for segmentation.  
-                Segment1: SEX in ('F') [Accuracy Full Model: 32% / Accuracy Segmented Model: 33%]
-                Segment2: SEX in ('M') [Accuracy Full Model: 63% / Accuracy Segmented Model: 68%]
+        Example 1:
+        ORIGINAL_BOOKED_AMOUNT: Not good for segmentation. Afer analysis, we did not find a good split using this variable.
+        Model Developed on ORIGINAL_BOOKED_AMOUNT Seg 1 (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 1 (test sample): 0.269 %
+        Model Developed on Full Population (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 1 (test sample): 0.269 %
+        Model Developed on ORIGINAL_BOOKED_AMOUNT Seg 2 (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 2 (test sample): 0.263 %
+        Model Developed on Full Population (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 2 (test sample): 0.263 %
                 
         """
 
