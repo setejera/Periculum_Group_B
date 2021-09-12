@@ -44,7 +44,7 @@ Parameters: All variables
 
 Returns: Variables name that are missing not at random
 
-Function **redundant_pairs**:
+Method **redundant_pairs**:
 
 Used to find pairs of columns that are repeated in the correlation matrix used in the method missing_not_at_random
 
@@ -75,7 +75,7 @@ Model Developed on ORIGINAL_BOOKED_AMOUNT Seg 2 (train sample) applied on ORIGIN
 
 Model Developed on Full Population (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 2 (test sample): 0.263 %
 
-Function **splits**:
+Method **splits**:
 
 This function is used to variable by variable in order to find the optimal point for segmentation. This is done by running a DecisionTreeClassifier from Sklearn to each variable, using the same target that was passed on to find_segmentation_split. In order to extract from the tree the root node spliting variable. 
 
@@ -83,7 +83,7 @@ Parameters: Variables that will be be passed through to the decision tree classi
 
 Returns: Splits will return a dictionary with each variable name and the root node splitting variable.
 
-Function **segmentation**:
+Method **segmentation**:
 
 This function goes variable by variable and calculates the GINI score of the fitted full model vs segmented model, to decide if the segmented model has better results. It is required to have run splits before, since this function needs the dictionary that was return by splits, in order to decide where to split each variable.
 
