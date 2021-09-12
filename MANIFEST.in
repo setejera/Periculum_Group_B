@@ -1,0 +1,9 @@
+include *.ipynb
+include *.txt
+recursive-include Periculum_Group_B_IE *.DS_Store
+recursive-include Periculum_Group_B_IE *.iml
+recursive-include Periculum_Group_B_IE *.py
+recursive-include Periculum_Group_B_IE *.pyc
+recursive-include Periculum_Group_B_IE *.xml
+recursive-include build *.py
+recursive-include dist *.whl
