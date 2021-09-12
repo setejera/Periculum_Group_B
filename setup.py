@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='Periculum_Group_B',
+setup(name='Periculum_Group_B_IE',
       version='0.1',  # Development release
       description='Risk_Based_Segmentation Package, Group Assignment',
       url='https://github.com/setejera/Periculum_Group_B.git',
