@@ -25,7 +25,7 @@ This is an optional method in case the data in the dataframe has date columns; i
 Parameters: date type variables
 Returns: integer value of the time delta
 
-# 3-	 RISK BASED APPROACH
+# 3-	 Risk Based Approach
 Function **missing_not_at_random**:
 This method checks for the correlation between the missing values in all the columns, pair by pair in order to see if the correlation is higher than threshold to be considered missing not at random.
 corr_threshold: This variable is the threshold that will be used as a cut off to decide if the correlation between the missing values between a pair of columns is high enough to be considered missing        not at random.
