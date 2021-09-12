@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open('README.md', 'r') as fh:
+      long_description = fh.read()
+
 setup(name='Periculum_Group_B_IE',
       version='0.0.1',  # Development release
       description='Risk_Based_Segmentation Package, Group Assignment',
@@ -9,4 +12,6 @@ setup(name='Periculum_Group_B_IE',
       license='MIT',
       packages=['Periculum_Group_B_IE'],
       zip_safe=False,
+      long_description=long_description,
+      long_description_content_types='text/markdown',
       )
