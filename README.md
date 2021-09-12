@@ -42,7 +42,9 @@ Returns: Variables name that are missing not at random
 The method aims to segment customers depending on the variables if they are good for segmentation or not to have a better model fit.
 The model used is logistic regression for a binary classification, which does not accept alphanumeric values; therefore, label encoder is automatically called if the method detects these data type columns. 
 The required argument for this method is target, since the logistic regression model needs this. Robust_scaler is an optional argument in order to enhance model performance. Once the baseline model with the full file without segmentation is calculated, the method continues to find where is the optimal place for splitting each column by applying a decision tree classifier, and extracting the root node splitting point. Finally it fits a model on the segmented dataset and compares the results of both models.
+
 Parameters: Categorical variables transformed to numerical values (there should be no missing values).
+
 Returns: 
 ORIGINAL_BOOKED_AMOUNT: Not good for segmentation. After analysis, we did not find a good split using this variable.
 Model Developed on ORIGINAL_BOOKED_AMOUNT Seg 1 (train sample) applied on ORIGINAL_BOOKED_AMOUNT Seg 1 (test sample): 0.269 %
