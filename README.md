@@ -1,9 +1,9 @@
 # Periculum_Group_B_IE
- Risk Based Segmentation Package
+# Risk Based Segmentation Package
 
-# Periculum is for risk assessment. It helps in data cleaning and modeling.
+Periculum is for risk assessment. It helps in data cleaning and modeling.
 
-# This package tries, through a very simple approach, to collect all the common tasks that are normally done through pandas DataFrames - classes and functions are created to facilitate this work:
+This package tries, through a very simple approach, to collect all the common tasks that are normally done through pandas DataFrames - classes and functions are created to facilitate this work:
 
 # Install
 To install this package, simply pip from this git repo:
