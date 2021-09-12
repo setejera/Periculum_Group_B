@@ -1,0 +1,5 @@
+include *.ipynb
+include *.txt
+recursive-include Periculum_Group_B_IE_GMBD *.DS_Store
+recursive-include Periculum_Group_B_IE_GMBD *.iml
+recursive-include Periculum_Group_B_IE_GMBD *.xml
