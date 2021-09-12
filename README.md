@@ -23,6 +23,7 @@ Returns: list of each column type
 Function **date_to_int**:
 This is an optional method in case the data in the dataframe has date columns; it will convert all the dates to year fraction from the reporting date to calculate the time difference. Which is necessary for the application of the segmentation method, because Sklearn logistic regression does not accept date type values. 
 Parameters: date type variables
+
 Returns: integer value of the time delta
 
 # 3-	 Risk Based Approach
